@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quotes
+  namespace: atlantis
+  labels:
+    app: quotes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: quotes
+  template:
+    metadata:
+      labels:
+        app: quotes
+    spec:
+      containers:
+      - name: quotes
+        image: quay.io/redhattraining/famous-quotes:2.1
+        ports:
+        - containerPort: 8000
+        env:
+        - name: QUOTES_HOSTNAME
+          value: mysql
+        - name: QUOTES_USER
+          value: ex280
+        - name: QUOTES_DATABASE
+          value: ex280
+        - name: QUOTES_PASSWORD
+          value: ex280

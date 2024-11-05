@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: neptune-quota
+  namespace: neptune
+spec:
+  hard:
+    limits.memory: 3Gi
+    limits.cpu: "2"
+    requests.memory: 1Gi
+    replicationcontrollers: "3"
+    pods: "5"
+    services: "3"

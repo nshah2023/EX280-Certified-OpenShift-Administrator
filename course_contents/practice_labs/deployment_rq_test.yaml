@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: test
+  name: test
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: test
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: test
+    spec:
+      containers:
+      - image: bitnami/nginx
+        name: nginx
+        resources:
+          requests:
+            memory: 80Mi
+          limits:
+            memory: 150Mi
+            cpu: 200m
+status: {}
