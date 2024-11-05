@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-storage-class-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-storage-class-app
+  template:
+    metadata:
+      labels:
+        app: my-storage-class-app
+    spec:
+      containers:
+      - name: my-storage-class-app
+        image: bitnami/nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: storage
+          mountPath: /data
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: my-hostpath-claim

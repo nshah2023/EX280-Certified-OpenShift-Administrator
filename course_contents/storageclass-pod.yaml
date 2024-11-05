@@ -1,0 +1,15 @@
+     apiVersion: v1
+     kind: Pod
+     metadata:
+       name: demo-pod
+     spec:
+       containers:
+       - name: demo-container
+         image: bitnami/nginx
+         volumeMounts:
+         - name: demo-volume
+           mountPath: /data
+       volumes:
+       - name: demo-volume
+         persistentVolumeClaim:
+           claimName: demo-pvc
