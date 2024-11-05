@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multus-pod
+  annotations:
+    k8s.v1.cni.cncf.io/networks: bridge-net
+spec:
+  containers:
+  - name: multus-pod
+    image: bitnami/nginx

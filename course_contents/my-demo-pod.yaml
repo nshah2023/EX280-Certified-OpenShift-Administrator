@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-demo-pod
+spec:
+  serviceAccountName: my-demo-sa
+  containers:
+    - name: my-container
+      image: busybox
+      command: ["sleep", "3600"]

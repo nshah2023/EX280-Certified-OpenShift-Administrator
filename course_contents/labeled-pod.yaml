@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-labeled-pod
+  labels:
+    app: my-app
+    environment: production
+    tier: frontend
+spec:
+  containers:
+  - name: my-container
+    image: bitnami/nginx

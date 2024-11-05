@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quota-test
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: dep-capacity
+  template:
+    metadata:
+      labels:
+        app: dep-capacity
+    spec:
+      containers:
+      - name: dep-capacity
+        image: busybox
+        command: ["sh", "-c", "while true; do echo 'Hello, OpenShift!'; sleep 5; done"]
+        resources:
+          limits:
+            memory: 128Mi
+            cpu: 100m
+          requests:
+            memory: 64Mi
+            cpu: 50m

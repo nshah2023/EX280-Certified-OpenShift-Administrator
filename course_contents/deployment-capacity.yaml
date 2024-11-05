@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-capacity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dep-capacity
+  template:
+    metadata:
+      labels:
+        app: dep-capacity
+    spec:
+      containers:
+      - name: dep-capacity
+        image: busybox
+        command: ["sh", "-c", "while true; do echo 'Hello, OpenShift!'; sleep 5; done"]
+        resources:
+          limits:
+            memory: 128Mi
+          requests:
+            memory: 64Mi

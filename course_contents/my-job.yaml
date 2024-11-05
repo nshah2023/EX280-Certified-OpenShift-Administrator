@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: one-time-tasks
+spec:
+  parallelism: 3
+  completions: 5
+  backoffLimit: 4
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - command:
+        - ls
+        image: bitnami/apache
+        name: one-time-tasks
+        resources: {}
+      restartPolicy: Never
+status: {}
