@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  APP_ENV: production
+  APP_DEBUG: "false"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: my-container
+      image: my-image
+      command: ["my-app"]
+      args: ["--env=$(APP_ENV)", "--debug=$(APP_DEBUG)"]
+      envFrom:
+        - configMapRef:
+            name: my-config

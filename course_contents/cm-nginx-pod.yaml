@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: bitnami/nginx
+    volumeMounts:
+    - name: config-volume
+      mountPath: /app
+  volumes:
+  - name: config-volume
+    configMap:
+      name: nginx-config
