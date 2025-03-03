@@ -9,13 +9,6 @@ spec:
   containers:
   - image: busybox
     name: busybox
-    command: ["/bin/sh", "-c", "printenv"]
-    env:
-    - name: api_url
-      valueFrom:
-        configMapKeyRef:
-          name: url
-          key: api_url
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
