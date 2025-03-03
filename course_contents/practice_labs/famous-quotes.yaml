@@ -1,31 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: quotes
-  namespace: atlantis
+  name: famous-quotes
+  namespace: avalon
   labels:
-    app: quotes
+    app: famous-quotes
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: quotes
+      app: famous-quotes
   template:
     metadata:
       labels:
-        app: quotes
+        app: famous-quotes
     spec:
       containers:
       - name: quotes
-        image: quay.io/redhattraining/famous-quotes:2.1
-        ports:
-        - containerPort: 8000
-        env:
-        - name: QUOTES_HOSTNAME
-          value: mysql
-        - name: QUOTES_USER
-          value: ex280
-        - name: QUOTES_DATABASE
-          value: ex280
-        - name: QUOTES_PASSWORD
-          value: ex280
+        image: quay.io/redhattraining/famous-quotes:1.0
