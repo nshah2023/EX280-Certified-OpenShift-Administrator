@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  URL: http://apache.apps.nishant-openshift-sandbox.westus3.aroapp.io
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: content
